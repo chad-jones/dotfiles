@@ -18,6 +18,7 @@ brew install krew
 brew install helm
 brew install sops
 brew install datawire/blackbird/telepresence
+brew install velero
 
 # dev
 brew install gh
@@ -131,5 +132,5 @@ ln -nfs ~/Dropbox/dotfiles/config/starship/starship.toml ~/.config/
 
 # don't slow me down
 defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write com.apple.Accessibility KeyRepeatEnabled -bool false

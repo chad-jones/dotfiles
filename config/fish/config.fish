@@ -51,3 +51,6 @@ zoxide init --cmd cd fish | source
 
 # Install Starship
 starship init fish | source
+
+pyenv init - | source
+pyenv virtualenv-init - | source

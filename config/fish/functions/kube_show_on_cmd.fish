@@ -1,4 +1,4 @@
-# Bind space as our trigger to read the current command
+  # Bind space as our trigger to read the current command
 bind ' ' 'commandline -f expand-abbr; _kube_show_on_cmd; commandline -i " "'
 # also in vim mode
 bind -M insert ' ' 'commandline -f expand-abbr; _kube_show_on_cmd; commandline -i " "'

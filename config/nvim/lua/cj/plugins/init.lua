@@ -222,7 +222,7 @@ if install_plugins then
 end
 
 -- colors/theme
-vim.cmd("colorscheme onedarkpro")
+vim.cmd("colorscheme onedark")
 
 -- lualine
 require('lualine').setup {
