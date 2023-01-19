@@ -47,6 +47,7 @@ brew install --build-from-source upx
 brew install postgresql
 brew install mariadb
 brew install pgloader
+brew install redisinsight
 
 # shell
 brew install iterm2
