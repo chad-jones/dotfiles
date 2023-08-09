@@ -9,10 +9,6 @@ end
 # bind ' ' 'commandline -f expand-abbr; show_on_cmd; commandline -i " "'
 # bind -M insert ' ' 'commandline -f expand-abbr; show_on_cmd; commandline -i " "'
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/chad/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
 set -x fish_greeting
 set -e SSH_AGENT_PID
 set -e SSH_ASKPASS
@@ -54,3 +50,7 @@ starship init fish | source
 
 pyenv init - | source
 pyenv virtualenv-init - | source
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/chad/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
