@@ -273,10 +273,7 @@ vim.g.kommentary_create_default_mappings = false
 require("telescope").load_extension('harpoon')
 
 -- indent blankline
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
+require("ibl").setup {
 }
 
 -- telescope layout

@@ -4,9 +4,14 @@ require("alpha.term")
 local dashboard = require("alpha.themes.dashboard")
 
 -- Terminal header
-dashboard.section.terminal.command = "cat | lolcat --seed=27 " .. os.getenv("HOME") .. "/.config/nvim/static/neovim.cat"
-dashboard.section.terminal.width = 69
+dashboard.section.terminal.command = "/bin/cat | lolcat --seed=27 " .. os.getenv("HOME") .. "/.config/nvim/static/neovim.cat"
+dashboard.section.terminal.width = 169
 dashboard.section.terminal.height = 8
+dashboard.section.terminal.opts = {
+        redraw = true,
+        window_config = {},
+        position = "center",
+    }
 
 local function button(sc, txt, keybind, keybind_opts)
   local b = dashboard.button(sc, txt, keybind, keybind_opts)

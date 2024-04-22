@@ -51,6 +51,16 @@ starship init fish | source
 pyenv init - | source
 pyenv virtualenv-init - | source
 
+source /opt/homebrew/anaconda3/etc/fish/conf.d/conda.fish
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 set --export --prepend PATH "/Users/chad/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Setting PATH for Python 3.10
+# The original version is saved in /Users/cj/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
+
+# Setting PATH for Python 3.10
+# The original version is saved in /Users/cj/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"

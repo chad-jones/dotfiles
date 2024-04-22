@@ -107,3 +107,5 @@ disabled = true
 [kubernetes.user_aliases]
 "dev.local.cluster.k8s" = "dev"
 "root/.*" = "root"
+[battery]
+disabled = true
