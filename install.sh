@@ -19,6 +19,7 @@ brew install helm
 brew install sops
 brew install datawire/blackbird/telepresence
 brew install velero
+brew install Azure/kubelogin/kubelogin
 
 # dev
 brew install gh
