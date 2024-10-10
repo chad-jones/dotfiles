@@ -43,6 +43,8 @@ brew install just
 brew install hub
 brew install neovide
 brew install --build-from-source upx
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 
 # db
 brew install postgresql
