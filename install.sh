@@ -21,6 +21,11 @@ brew install datawire/blackbird/telepresence
 brew install velero
 brew install Azure/kubelogin/kubelogin
 
+# devops
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+brew install azure-cli
+
 # dev
 brew install gh
 brew install git
@@ -43,14 +48,11 @@ brew install just
 brew install hub
 brew install neovide
 brew install --build-from-source upx
-brew tap hashicorp/tap
-brew install hashicorp/tap/terraform
 
 # db
 brew install postgresql
 brew install mariadb
 brew install pgloader
-brew install redisinsight
 
 # shell
 brew install iterm2
@@ -66,7 +68,6 @@ brew install thefuck
 brew install pwgen
 brew install htop
 brew install starship
-brew tap homebrew/cask-fonts
 brew install --cask font-fira-code-nerd-font
 brew install viu
 brew install lolcat
@@ -85,9 +86,6 @@ brew install grep
 brew install curl
 brew install wget
 brew install croc
-brew install xbar
-brew install openfortivpn
-brew install --cask tunnelblick
 brew install bat
 brew install delta
 brew install fd
@@ -99,7 +97,6 @@ brew install zoxide
 
 # other
 brew install spotify
-brew install slack
 brew install maestral
 
 # kubectl plugins
@@ -111,12 +108,12 @@ wget -qO- https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubeco
 chmod +x ~/bin/kubectl-login
 
 # Vim
-mkdir -p ~/.config/nvim/lua/cj
-ln -nfs ~/Dropbox/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
-ln -nfs ~/Dropbox/dotfiles/config/nvim/static ~/.config/nvim/static
-ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/plugins ~/.config/nvim/lua/cj/plugins
-ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/settings ~/.config/nvim/lua/cj/settings
-ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/keymaps ~/.config/nvim/lua/cj/keymaps
+#mkdir -p ~/.config/nvim/lua/cj
+#ln -nfs ~/Dropbox/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
+#ln -nfs ~/Dropbox/dotfiles/config/nvim/static ~/.config/nvim/static
+#ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/plugins ~/.config/nvim/lua/cj/plugins
+#ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/settings ~/.config/nvim/lua/cj/settings
+#ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/keymaps ~/.config/nvim/lua/cj/keymaps
 
 # Fish
 # supress lastlogin message

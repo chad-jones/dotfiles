@@ -7,7 +7,7 @@ bind -M insert ' ' 'commandline -f expand-abbr; _kube_show_on_cmd; commandline -
 set -n | string match -r '^kube_show_(.*)_on$' | while read -Ll match item
     set -l func _kube_item_$item
     functions -q _$func && continue
-    functions --copy $func _$func
+    functions --copy $func _$func 2>/dev/null
     echo "
 function $func --description (functions --details --verbose $func)[5]
     if set -q _kube_show_$item || set -q kube_"$item"_always_display

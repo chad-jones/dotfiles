@@ -64,3 +64,4 @@ set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
 # Setting PATH for Python 3.10
 # The original version is saved in /Users/cj/.config/fish/config.fish.pysave
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
+set -x KUBECONFIG $HOME/.kube/config:$HOME/.kube/aks-prod-eu1.yaml:$HOME/.kube/aks-inf-eu1.yaml
