@@ -20,6 +20,8 @@ brew install sops
 brew install datawire/blackbird/telepresence
 brew install velero
 brew install Azure/kubelogin/kubelogin
+brew install kubie
+brew install kubecolor
 
 # devops
 brew tap hashicorp/tap
