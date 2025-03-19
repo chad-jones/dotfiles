@@ -96,6 +96,8 @@ brew install jq
 brew install yq
 brew install ngrok
 brew install zoxide
+brew install --cask macfuse
+brew install cryfs/tap/cryfs
 
 # other
 brew install spotify
