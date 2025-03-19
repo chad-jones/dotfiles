@@ -10,6 +10,8 @@ brew install pinentry-mac
 brew install openssl
 brew install git-crypt
 brew install gopass
+brew install cryfs/tap/cryfs
+
 
 # kubernetes
 brew install kubectl
@@ -97,7 +99,6 @@ brew install yq
 brew install ngrok
 brew install zoxide
 brew install --cask macfuse
-brew install cryfs/tap/cryfs
 brew install ykman
 
 # other
