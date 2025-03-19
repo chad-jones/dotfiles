@@ -98,6 +98,7 @@ brew install ngrok
 brew install zoxide
 brew install --cask macfuse
 brew install cryfs/tap/cryfs
+brew install ykman
 
 # other
 brew install spotify
