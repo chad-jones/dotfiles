@@ -140,6 +140,6 @@ ln -nfs ~/dotfiles/config/starship/starship.toml ~/.config/
 ./install-fisher.sh
 
 # don't slow me down
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 0.02
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write com.apple.Accessibility KeyRepeatEnabled -bool false
