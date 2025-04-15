@@ -60,6 +60,7 @@ brew install pgloader
 
 # shell
 brew install iterm2
+brew install --cask wezterm
 brew install fish
 brew install jump
 brew install fzf
@@ -114,12 +115,13 @@ wget -qO- https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubeco
 chmod +x ~/bin/kubectl-login
 
 # Vim
-#mkdir -p ~/.config/nvim/lua/cj
-#ln -nfs ~/Dropbox/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
-#ln -nfs ~/Dropbox/dotfiles/config/nvim/static ~/.config/nvim/static
-#ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/plugins ~/.config/nvim/lua/cj/plugins
-#ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/settings ~/.config/nvim/lua/cj/settings
-#ln -nfs ~/Dropbox/dotfiles/config/nvim/lua/cj/keymaps ~/.config/nvim/lua/cj/keymaps
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+ln -nfs ~/dotfiles/config/nvim/lua/plugins/colorscheme.lua ~/.config/nvim/lua/plugins/colorscheme.lua
+#ln -nfs ~/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
+#ln -nfs ~/dotfiles/config/nvim/static ~/.config/nvim/static
+#ln -nfs ~/dotfiles/config/nvim/lua/cj/plugins ~/.config/nvim/lua/cj/plugins
+#ln -nfs ~/dotfiles/config/nvim/lua/cj/settings ~/.config/nvim/lua/cj/settings
+#ln -nfs ~/dotfiles/config/nvim/lua/cj/keymaps ~/.config/nvim/lua/cj/keymaps
 
 # Fish
 # supress lastlogin message
@@ -128,12 +130,12 @@ echo "Add fish to /etc/shells"
 grep -E "(fish)" /etc/shells || echo "/opt/homebrew/opt/fish/bin/fish" | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/opt/fish/bin/fish
 mkdir -p ~/.config/fish/functions
-ln -nfs ~/Dropbox/dotfiles/config/fish/config.fish ~/.config/fish/
-ln -nfs ~/Dropbox/dotfiles/config/fish/alias.fish ~/.config/fish/
-for file in ~/Dropbox/dotfiles/config/fish/functions/*; do ln -nfs "$file" ~/.config/fish/functions/"$(basename -- $file)"; done;
+ln -nfs ~/dotfiles/config/fish/config.fish ~/.config/fish/
+ln -nfs ~/dotfiles/config/fish/alias.fish ~/.config/fish/
+for file in ~/dotfiles/config/fish/functions/*; do ln -nfs "$file" ~/.config/fish/functions/"$(basename -- $file)"; done;
 
 # starship
-ln -nfs ~/Dropbox/dotfiles/config/starship/starship.toml ~/.config/
+ln -nfs ~/dotfiles/config/starship/starship.toml ~/.config/
 # fisher
 ./install-fisher.sh
 
