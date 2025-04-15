@@ -114,14 +114,14 @@ wget -O ~/bin/kubectl-login https://github.com/pmpplatform/ps-kubectl-login/rele
 wget -qO- https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Darwin_arm64.tar.gz | tar xvz -C ~/bin
 chmod +x ~/bin/kubectl-login
 
-# Vim
+# wezterm
+mkdir -p /.config/wezterm/colors
+ln -nfs ~/dotfiles/config/wezterm/wezterm.lua ~/.config/wezterm/
+ln -nfs ~/dotfiles/config/wezterm/colors/carbonfox.toml ~/.config/wezterm/colors/carbonfox.toml
+
+# LazyVim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 ln -nfs ~/dotfiles/config/nvim/lua/plugins/colorscheme.lua ~/.config/nvim/lua/plugins/colorscheme.lua
-#ln -nfs ~/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
-#ln -nfs ~/dotfiles/config/nvim/static ~/.config/nvim/static
-#ln -nfs ~/dotfiles/config/nvim/lua/cj/plugins ~/.config/nvim/lua/cj/plugins
-#ln -nfs ~/dotfiles/config/nvim/lua/cj/settings ~/.config/nvim/lua/cj/settings
-#ln -nfs ~/dotfiles/config/nvim/lua/cj/keymaps ~/.config/nvim/lua/cj/keymaps
 
 # Fish
 # supress lastlogin message
