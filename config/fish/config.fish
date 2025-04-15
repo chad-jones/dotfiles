@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     # kube prompt
-    source  ~/Dropbox/dotfiles/config/fish/functions/kube_show_on_cmd.fish
+    source  ~/dotfiles/config/fish/functions/kube_show_on_cmd.fish
     set -gx kube_show_kubectl_on k kubectl helm kns kctx kg kga kgp kgpa kgn kgs kgsa kgss kgds kgdsa kgcm kgcma kgd kgda kgi kgia kge kgea
 end
 
