@@ -190,6 +190,9 @@ elif [[ ${UNAME} == "Linux" ]]; then
   cp ~/dotfiles/config/wezterm/colors/carbonfox.toml /mnt/c/Users/chad.jones/colors/carbonfox.toml
 fi
 
+# git
+ln -nfs ~/dotfiles/config/git/gitconfig ~/.gitconfig
+
 # kubectl plugins
 kubectl krew install relay
 kubectl krew install sniff
