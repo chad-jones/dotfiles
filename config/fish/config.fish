@@ -38,23 +38,14 @@ switch (uname)
 end
 
 set -x fish_greeting
-set -e SSH_AGENT_PID
-set -e SSH_ASKPASS
-set -x SSH_AUTH_SOCK "$HOME/.gnupg/S.gpg-agent.ssh"
 
-# Set GPG TTY
+# Ensure that GPG Agent is used as the SSH agent
+set -e SSH_AUTH_SOCK
+set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+
 set -x GPG_TTY (tty)
 
-# gpg-agent as SSH agent
-set -e SSH_AGENT_PID
-set -e SSH_AUTH_SOCK
-if test -z $gnupg_SSH_AUTH_SOCK_by
-    set gnupg_SSH_AUTH_SOCK_by 0
-end
-if test $gnupg_SSH_AUTH_SOCK_by -ne %self
-    set UID (id -u)
-    set -Ux SSH_AUTH_SOCK "$HOME/.gnupg/S.gpg-agent.ssh"
-end
+gpgconf --launch gpg-agent
 
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
