@@ -36,28 +36,14 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     { key = "RightArrow", mods = "SHIFT",     action = act.ActivatePaneDirection("Right") },
     { key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Right', 1 } },
     { key = "w",          mods = "ALT",       action = act.CloseCurrentPane({ confirm = true }) },
-    { key = "r",          mods = "LEADER",    action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-    { key = "Enter",      mods = "LEADER",    action = act.ActivateCopyMode },
     { key = "c",          mods = "ALT",       action = act.CopyTo("Clipboard") },
+    { key = "v",          mods = "ALT",       action = act.PasteFrom("Clipboard") },
     { key = "n",          mods = "ALT",       action = act.SpawnWindow },
     { key = "t",          mods = "ALT",       action = act.SpawnTab 'DefaultDomain' },
-    { key = "v",          mods = "ALT",       action = act.PasteFrom("Clipboard") },
     { key = 'k',          mods = "ALT",       action = act.Multiple {
       act.ClearScrollback "ScrollbackAndViewport",
       act.SendKey { key = "l", mods = "CTRL" },
     }},
-    {
-      key = ",",
-      mods = "LEADER",
-      action = act.PromptInputLine({
-        description = "Enter new name for tab",
-        action = wezterm.action_callback(function(window, pane, line)
-          if line then
-            window:active_tab():set_title(line)
-          end
-        end),
-      }),
-    },
   }
   end
 
@@ -72,30 +58,22 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
   config.macos_window_background_blur = 20-- key mapping
   config.keys = {
     { key = "d",          mods = "SHIFT|CMD", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { key = "d",          mods = "CMD",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "DownArrow",  mods = "SHIFT",     action = wezterm.action.ActivatePaneDirection("Down") },
-    { key = "UpArrow",    mods = "SHIFT",     action = wezterm.action.ActivatePaneDirection("Up") },
-    { key = "LeftArrow",  mods = "SHIFT",     action = wezterm.action.ActivatePaneDirection("Left") },
-    { key = "RightArrow", mods = "SHIFT",     action = wezterm.action.ActivatePaneDirection("Right") },
+    { key = "d",          mods = "CMD",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },    
+    { key = "DownArrow",  mods = "SHIFT",     action = act.ActivatePaneDirection("Down") },
+    { key = "DownArrow",  mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = "UpArrow",    mods = "SHIFT",     action = act.ActivatePaneDirection("Up") },
+    { key = "UpArrow",    mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Up', 1 } },
+    { key = "LeftArrow",  mods = "SHIFT",     action = act.ActivatePaneDirection("Left") },
+    { key = "LeftArrow",  mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Left', 1 } },
+    { key = "RightArrow", mods = "SHIFT",     action = act.ActivatePaneDirection("Right") },
+    { key = "RightArrow", mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Right', 1 } },
     { key = "w",          mods = "CMD",       action = act.CloseCurrentPane({ confirm = true }) },
-    { key = "r",          mods = "LEADER",    action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-    { key = "Enter",      mods = "LEADER",    action = act.ActivateCopyMode },
-    { key = "c",          mods = "CMD",       action = act.CopyTo("Clipboard") },
     { key = "n",          mods = "CMD",       action = act.SpawnWindow },
     { key = "t",          mods = "CMD",       action = act.SpawnTab 'DefaultDomain' },
-    { key = "v",          mods = "CMD",       action = act.PasteFrom("Clipboard") },
-    {
-      key = ",",
-      mods = "LEADER",
-      action = act.PromptInputLine({
-        description = "Enter new name for tab",
-        action = wezterm.action_callback(function(window, pane, line)
-          if line then
-            window:active_tab():set_title(line)
-          end
-        end),
-      }),
-    },
+    { key = 'k',          mods = "CMD",       action = act.Multiple {
+      act.ClearScrollback "ScrollbackAndViewport",
+      act.SendKey { key = "l", mods = "CTRL" },
+    }},
   }
   end
 
