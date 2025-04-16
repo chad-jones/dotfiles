@@ -114,7 +114,8 @@ if [[ ${UNAME} == "Darwin" ]]; then
   chsh -s /opt/homebrew/opt/fish/bin/fish
 
   # don't slow me down
-  defaults write NSGlobalDomain KeyRepeat -int 0.02
+  defaults write -g ApplePressAndHoldEnabled -bool false
+  defaults write NSGlobalDomain KeyRepeat -int 1
   defaults write NSGlobalDomain InitialKeyRepeat -int 12
   defaults write com.apple.Accessibility KeyRepeatEnabled -bool false
 
