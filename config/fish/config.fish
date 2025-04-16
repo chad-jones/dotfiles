@@ -24,17 +24,15 @@ switch (uname)
         ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
         # Setting PATH for Python 3.10
-        # The original version is saved in /Users/cj/.config/fish/config.fish.pysave
-        set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
-
-        # Setting PATH for Python 3.10
-        # The original version is saved in /Users/cj/.config/fish/config.fish.pysave
         set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
         set -x KUBECONFIG $HOME/.kube/config
+        source ~/.config/fish/alias.darwin.fish
 
     case Linux
-        set -gx PATH $PATH $HOME/bin $HOME/.krew/bin
         # do things for Linux
+        set -gx PATH $PATH $HOME/bin $HOME/.krew/bin
+        source ~/.config/fish/alias.linux.fish
+
     case '*'
         # do things for other OSs
 end
