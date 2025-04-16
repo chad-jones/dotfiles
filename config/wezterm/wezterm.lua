@@ -2,7 +2,6 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
-
 -- theme
 config.color_scheme = 'carbonfox'
 
