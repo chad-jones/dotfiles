@@ -99,4 +99,9 @@ end
 -- stop the noise
 config.audible_bell = "Disabled"
 
+config.inactive_pane_hsb = {
+  saturation = 0.9,
+  brightness = 0.15,
+}
+
 return config
