@@ -38,6 +38,10 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     { key = "n",          mods = "ALT",       action = act.SpawnWindow },
     { key = "t",          mods = "ALT",       action = act.SpawnTab 'DefaultDomain' },
     { key = "v",          mods = "ALT",       action = act.PasteFrom("Clipboard") },
+    { key = 'k',          mods = "ALT",       action = act.Multiple {
+      act.ClearScrollback "ScrollbackAndViewport",
+      act.SendKey { key = "l", mods = "CTRL" },
+    }},
     {
       key = ",",
       mods = "LEADER",
