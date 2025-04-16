@@ -12,7 +12,6 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install pinentry-mac
   brew install openssl
   brew install git-crypt
-  brew install gopass
   brew install cryfs/tap/cryfs
 
   # kubernetes
