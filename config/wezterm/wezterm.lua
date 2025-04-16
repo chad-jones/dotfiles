@@ -20,6 +20,11 @@ config.mouse_bindings = {
 
 -- Windows
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  -- font
+  config.font = wezterm.font {
+    family = 'FiraCode Nerd Font Mono',
+    weight = 'Regular',
+  }
   -- IMPORTANT: Sets WSL2 UBUNTU as the defualt when opening Wezterm
   config.default_domain = 'WSL:Ubuntu'
   config.color_scheme_dirs = { '/mnt/c/Users/chad.jones/colors' }
@@ -55,7 +60,8 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
     weight = 'Regular',
   }
   config.font_size = 14.0
-  config.macos_window_background_blur = 20-- key mapping
+  config.macos_window_background_blur = 20
+  -- key mapping
   config.keys = {
     { key = "d",          mods = "SHIFT|CMD", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "d",          mods = "CMD",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },    
