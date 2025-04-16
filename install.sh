@@ -185,13 +185,22 @@ elif [[ ${UNAME} == "Linux" ]]; then
       ./"${KREW}" install krew
   )
   # wezterm
-  mkdir -p /mnt/c/Users/chad.jones/colors
   cp ~/dotfiles/config/wezterm/wezterm.lua /mnt/c/Users/chad.jones/.wezterm.lua
-  cp ~/dotfiles/config/wezterm/colors/carbonfox.toml /mnt/c/Users/chad.jones/colors/carbonfox.toml
 fi
 
 # git
-ln -nfs ~/dotfiles/config/git/gitconfig ~/.gitconfig
+mkdir -p ~/.config/git/themes
+ln -nfs ~/dotfiles/config/git/gitconfig ~/.config/git/config
+ln -nfs ~/dotfiles/config/git/themes/catppuccin.gitconfig ~/.config/git/themes/catpuccin.gitconfig
+
+# bat
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+bat cache --build
+echo '--theme="Catppuccin Mocha"' > "$(bat --config-dir)/config"
 
 # kubectl plugins
 kubectl krew install relay
@@ -199,9 +208,7 @@ kubectl krew install sniff
 kubectl krew install view-secret
 
 # wezterm
-mkdir -p ~/.config/wezterm/colors
 ln -nfs ~/dotfiles/config/wezterm/wezterm.lua ~/.config/wezterm/
-ln -nfs ~/dotfiles/config/wezterm/colors/carbonfox.toml ~/.config/wezterm/colors/carbonfox.toml
 
 # LazyVim
 git clone https://github.com/LazyVim/starter ~/.config/nvim

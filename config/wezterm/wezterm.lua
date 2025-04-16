@@ -3,7 +3,7 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 -- theme
-config.color_scheme = 'carbonfox'
+config.color_scheme = 'Catppuccin Mocha'
 
 -- window
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
@@ -91,8 +91,8 @@ end
 config.audible_bell = "Disabled"
 
 config.inactive_pane_hsb = {
-  saturation = 0.9,
-  brightness = 0.15,
+  saturation = 0.6,
+  brightness = 0.5,
 }
 
 return config

@@ -4,7 +4,8 @@
   signingkey = E679734C16056721
 [init]
   defaultBranch = main
-
+[include]
+	path = ~/.config/git/themes/catpuccin.gitconfig
 # common operations
 [checkout]
   defaultRemote = "origin" ; uses origin by default even if there are multiple remotes
@@ -60,6 +61,7 @@
   pager = "delta" ; https://github.com/dandavison/delta
 [delta]
   side-by-side = true
+  features = catppuccin-mocha
 [credential]
   helper = store ; TODO: replace with rbw or something
 [diff]
