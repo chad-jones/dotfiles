@@ -196,7 +196,7 @@ kubectl krew install sniff
 kubectl krew install view-secret
 
 # wezterm
-mkdir -p /.config/wezterm/colors
+mkdir -p ~/.config/wezterm/colors
 ln -nfs ~/dotfiles/config/wezterm/wezterm.lua ~/.config/wezterm/
 ln -nfs ~/dotfiles/config/wezterm/colors/carbonfox.toml ~/.config/wezterm/colors/carbonfox.toml
 
