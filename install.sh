@@ -202,7 +202,7 @@ ln -nfs ~/dotfiles/config/wezterm/colors/carbonfox.toml ~/.config/wezterm/colors
 
 # LazyVim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
-ln -nfs ~/dotfiles/config/nvim/lua/plugins/colorscheme.lua ~/.config/nvim/lua/plugins/colorscheme.lua
+for file in ~/dotfiles/config/nvim/lua/plugins/*; do ln -nfs "${file}" ~/.config/nvim/lua/plugins/"$(basename -- "${file}")"; done
 
 # Fish
 # supress lastlogin message
