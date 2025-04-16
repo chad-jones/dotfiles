@@ -170,6 +170,8 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt install -y neovim
   sudo apt install -y terraform
   sudo apt install -y gnupg
+  sudo apt install -y pinentry-gtk2
+  sudo apt install -y pinentry-curses
   sudo apt install -y software-properties-common
   # install krew
   (
