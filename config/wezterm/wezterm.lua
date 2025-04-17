@@ -9,7 +9,6 @@ config.color_scheme = 'Catppuccin Mocha'
 -- window
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
-
 config.mouse_bindings = {
   -- Ctrl-click will open the link under the mouse cursor
   {
@@ -33,14 +32,14 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.keys = {
     { key = "d",          mods = "SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "d",          mods = "ALT",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    -- { key = "DownArrow",  mods = "ALT",       action = act.ActivatePaneDirection("Down") },
-    -- { key = "DownArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Down', 1 } },
-    -- { key = "UpArrow",    mods = "ALT",       action = act.ActivatePaneDirection("Up") },
-    -- { key = "UpArrow",    mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Up', 1 } },
-    -- { key = "LeftArrow",  mods = "ALT",       action = act.ActivatePaneDirection("Left") },
-    -- { key = "LeftArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Left', 1 } },
-    -- { key = "RightArrow", mods = "ALT",       action = act.ActivatePaneDirection("Right") },
-    -- { key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Right', 1 } },
+      -- { key = "DownArrow",  mods = "ALT",       action = act.ActivatePaneDirection("Down") },
+      -- { key = "DownArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Down', 1 } },
+      -- { key = "UpArrow",    mods = "ALT",       action = act.ActivatePaneDirection("Up") },
+      -- { key = "UpArrow",    mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Up', 1 } },
+      -- { key = "LeftArrow",  mods = "ALT",       action = act.ActivatePaneDirection("Left") },
+      -- { key = "LeftArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Left', 1 } },
+      -- { key = "RightArrow", mods = "ALT",       action = act.ActivatePaneDirection("Right") },
+      -- { key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Right', 1 } },
     { key = "w",          mods = "ALT",       action = act.CloseCurrentPane({ confirm = true }) },
     { key = "c",          mods = "ALT",       action = act.CopyTo("Clipboard") },
     { key = "v",          mods = "ALT",       action = act.PasteFrom("Clipboard") },
