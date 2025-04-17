@@ -19,14 +19,13 @@ switch (uname)
         eval "$(/opt/homebrew/bin/brew shellenv)"
         source /opt/homebrew/anaconda3/etc/fish/conf.d/conda.fish
 
-        ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-        set --export --prepend PATH "/Users/chad/.rd/bin"
-        ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
         # Setting PATH for Python 3.10
         set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
         set -x KUBECONFIG $HOME/.kube/config
         source ~/.config/fish/alias.darwin.fish
+        ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+        set --export --prepend PATH "/Users/cj/.rd/bin"
+        ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
     case Linux
         # do things for Linux

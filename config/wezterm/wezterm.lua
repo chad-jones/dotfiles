@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
 local config = wezterm.config_builder()
 local act = wezterm.action
 
@@ -32,14 +33,14 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.keys = {
     { key = "d",          mods = "SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "d",          mods = "ALT",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "DownArrow",  mods = "SHIFT",     action = act.ActivatePaneDirection("Down") },
-    { key = "DownArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Down', 1 } },
-    { key = "UpArrow",    mods = "SHIFT",     action = act.ActivatePaneDirection("Up") },
-    { key = "UpArrow",    mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Up', 1 } },
-    { key = "LeftArrow",  mods = "SHIFT",     action = act.ActivatePaneDirection("Left") },
-    { key = "LeftArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Left', 1 } },
-    { key = "RightArrow", mods = "SHIFT",     action = act.ActivatePaneDirection("Right") },
-    { key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Right', 1 } },
+    -- { key = "DownArrow",  mods = "ALT",       action = act.ActivatePaneDirection("Down") },
+    -- { key = "DownArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Down', 1 } },
+    -- { key = "UpArrow",    mods = "ALT",       action = act.ActivatePaneDirection("Up") },
+    -- { key = "UpArrow",    mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Up', 1 } },
+    -- { key = "LeftArrow",  mods = "ALT",       action = act.ActivatePaneDirection("Left") },
+    -- { key = "LeftArrow",  mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Left', 1 } },
+    -- { key = "RightArrow", mods = "ALT",       action = act.ActivatePaneDirection("Right") },
+    -- { key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize { 'Right', 1 } },
     { key = "w",          mods = "ALT",       action = act.CloseCurrentPane({ confirm = true }) },
     { key = "c",          mods = "ALT",       action = act.CopyTo("Clipboard") },
     { key = "v",          mods = "ALT",       action = act.PasteFrom("Clipboard") },
@@ -65,14 +66,14 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
   config.keys = {
     { key = "d",          mods = "SHIFT|CMD", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "d",          mods = "CMD",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },    
-    { key = "DownArrow",  mods = "SHIFT",     action = act.ActivatePaneDirection("Down") },
-    { key = "DownArrow",  mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Down', 1 } },
-    { key = "UpArrow",    mods = "SHIFT",     action = act.ActivatePaneDirection("Up") },
-    { key = "UpArrow",    mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Up', 1 } },
-    { key = "LeftArrow",  mods = "SHIFT",     action = act.ActivatePaneDirection("Left") },
-    { key = "LeftArrow",  mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Left', 1 } },
-    { key = "RightArrow", mods = "SHIFT",     action = act.ActivatePaneDirection("Right") },
-    { key = "RightArrow", mods = "SHIFT|CMD", action = act.AdjustPaneSize { 'Right', 1 } },
+    -- { key = "k",          mods = "CTRL",      action = act.ActivatePaneDirection("Down") },
+    -- { key = "k",          mods = "META",      action = act.AdjustPaneSize { 'Down', 1 } },
+    -- { key = "j",          mods = "CTRL",      action = act.ActivatePaneDirection("Up") },
+    -- { key = "j",          mods = "META",      action = act.AdjustPaneSize { 'Up', 1 } },
+    -- { key = "h",          mods = "CTRL",      action = act.ActivatePaneDirection("Left") },
+    -- { key = "h",          mods = "META",      action = act.AdjustPaneSize { 'Left', 1 } },
+    -- { key = "l",          mods = "CTRL",      action = act.ActivatePaneDirection("Right") },
+    -- { key = "l",          mods = "META",      action = act.AdjustPaneSize { 'Right', 1 } },
     { key = "w",          mods = "CMD",       action = act.CloseCurrentPane({ confirm = true }) },
     { key = "n",          mods = "CMD",       action = act.SpawnWindow },
     { key = "t",          mods = "CMD",       action = act.SpawnTab 'DefaultDomain' },
@@ -94,5 +95,7 @@ config.inactive_pane_hsb = {
   saturation = 0.6,
   brightness = 0.5,
 }
+
+smart_splits.apply_to_config(config)
 
 return config
