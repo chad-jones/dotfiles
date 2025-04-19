@@ -186,6 +186,7 @@ elif [[ ${UNAME} == "Linux" ]]; then
   )
   # wezterm
   cp ~/dotfiles/config/wezterm/wezterm.lua /mnt/c/Users/chad.jones/.wezterm.lua
+  cp ~/dotfiles/config/wallpaper/background.jpg /mnt/c/Users/chad.jones/background.jpg
 fi
 
 # git
@@ -209,6 +210,7 @@ kubectl krew install view-secret
 
 # wezterm
 ln -nfs ~/dotfiles/config/wezterm/wezterm.lua ~/.config/wezterm/
+ln -nfs ~/dotfiles/config/wallpaper/background.jpg ~/.config/background.jpg
 
 # LazyVim
 git clone https://github.com/LazyVim/starter ~/.config/nvim

@@ -33,6 +33,12 @@ return {
                 mode = { "n", "v" },
                 desc = "Move to right window",
             },
+            {
+                "<C-\\>",
+                function() require("smart-splits").move_cursor_previous() end,
+                mode = { "n", "v" },
+                desc = "Move to previous window",
+            },
             -- Resize splits
             {
                 "<A-h>",
