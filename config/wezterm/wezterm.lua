@@ -3,6 +3,9 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 local mux = wezterm.mux
 
+config.pane_focus_follows_mouse = true
+config.scrollback_lines = 5000
+
 -- leader
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
@@ -198,15 +201,21 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.color_scheme_dirs = { "/mnt/c/Users/chad.jones/colors" }
 	-- key mapping
 	config.keys = {
-		{ key = "d", mods = "SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "d", mods = "ALT",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "[", mods = "ALT",       action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "ALT",       action = act.ActivateTabRelative(1) },
-		{ key = "w", mods = "ALT",       action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "c", mods = "ALT",       action = act.CopyTo("Clipboard") },
-		{ key = "v", mods = "ALT",       action = act.PasteFrom("Clipboard") },
-		{ key = "n", mods = "ALT",       action = act.SpawnWindow },
-		{ key = "t", mods = "ALT",       action = act.SpawnTab("DefaultDomain") },
+		{ key = "d", mods = "SHIFT|ALT",    action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "d", mods = "ALT",                action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "[", mods = "ALT",                action = act.ActivateTabRelative(-1) },
+		{ key = "]", mods = "ALT",                action = act.ActivateTabRelative(1) },
+		{ key = "w", mods = "ALT",                action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "c", mods = "ALT",                action = act.CopyTo("Clipboard") },
+		{ key = "v", mods = "ALT",                action = act.PasteFrom("Clipboard") },
+		{ key = "n", mods = "ALT",                action = act.SpawnWindow },
+		{ key = "t", mods = "ALT",                action = act.SpawnTab("DefaultDomain") },
+		{ key = 'f', mods = 'ALT',          action = act.TogglePaneZoomState },
+		{ key = 'w', mods = 'LEADER',       action = act.ShowTabNavigator },
+		{ key = '[', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
+		{ key = ']', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
+		{ key = '{', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
+		{ key = '}', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
 		{
 			key = "k",
 			mods = "ALT",
@@ -233,14 +242,20 @@ if wezterm.target_triple == "aarch64-apple-darwin" then
 	config.macos_window_background_blur = 20
 	-- key mapping
 	config.keys = {
-		{ key = "d", mods = "SHIFT|CMD", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "d", mods = "CMD",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "[", mods = "ALT",       action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "ALT",       action = act.ActivateTabRelative(1) },
-		{ key = "f", mods = "CTRL|CMD",  action = wezterm.action.ToggleFullScreen },
-		{ key = "w", mods = "CMD",       action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "n", mods = "CMD",       action = act.SpawnWindow },
-		{ key = "t", mods = "CMD",       action = act.SpawnTab("DefaultDomain") },
+		{ key = "d", mods = "SHIFT|CMD",    action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "d", mods = "CMD",                action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "[", mods = "CMD",                action = act.ActivateTabRelative(-1) },
+		{ key = "]", mods = "CMD",                action = act.ActivateTabRelative(1) },
+		{ key = "w", mods = "CMD",          action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "n", mods = "CMD",          action = act.SpawnWindow },
+		{ key = "t", mods = "CMD",           action = act.SpawnTab("DefaultDomain") },
+		{ key = 'f', mods = 'ALT',          action = act.TogglePaneZoomState },
+		{ key = "x", mods = "LEADER",             action = act.CloseCurrentTab({ confirm = true }) },
+		{ key = 'w', mods = 'LEADER',             action = act.ShowTabNavigator },
+		{ key = '[', mods = 'LEADER',             action = act.PaneSelect { mode = 'Activate' } },
+		{ key = ']', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
+		{ key = '{', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
+		{ key = '}', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
 		{
 			key = "k",
 			mods = "CMD",
