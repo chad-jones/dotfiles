@@ -3,35 +3,6 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 local mux = wezterm.mux
 
--- Function fetch weather data
-local function get_weather()
-	local handle = io.popen("curl -s 'wttr.in/?format=%t+%C&u'")
-	if not handle then
-		return " 󰧠 "
-	end
-
-	local result = handle:read("*a")
-	handle:close()
-
-	-- Ensure result isn't nil or empty
-	if not result or result == "" then
-		return " 󰧠 "
-	end
-
-	-- Extract temperature and condition
-	local temp, condition = result:match("([^%s]+)%s(.+)")
-	if not temp or not condition then
-		return " 󰧠 "
-	end
-	-- Remove "+" from positive temperatures
-	temp = temp:gsub("+", "")
-
-	return temp .. " " .. condition .. " "
-end
-
--- window
-config.window_decorations = "RESIZE"
-
 -- leader
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
@@ -64,7 +35,7 @@ local function set_background(config, is_fullscreen)
 	  config.background = {
 		{
 		  source = {
-			File = wezterm.home_dir .. '/.config/background.jpg',
+			File = {path = wezterm.home_dir .. '/.config/background.jpg'},
 		  },
 		  attachment = { Parallax = 0.1 },
 		  repeat_y = 'Mirror',
@@ -147,7 +118,7 @@ tabline.setup({
 			{ "zoomed", padding = 0 },
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = { get_weather },
+		tabline_x = {  },
 		tabline_y = { "battery" },
 		tabline_z = {
 			{
@@ -236,6 +207,8 @@ end
 if wezterm.target_triple == "aarch64-apple-darwin" then
 	-- avoid the notch
 	config.native_macos_fullscreen_mode = true
+	-- window
+	config.window_decorations = "RESIZE"
 	-- font
 	config.font = wezterm.font({
 		family = "FiraCode Nerd Font Mono",
