@@ -28,38 +28,51 @@ config.colors = {
 		},
 	},
 }
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	config.win32_system_backdrop = 'Tabbed'
+end
+
 -- Switch between just an opacity and a background image based on whether we are fullscreen
 local function set_background(config, is_fullscreen)
 	if is_fullscreen then
-	  config.window_background_opacity = nil
-	  config.background = {
-		{
-		  source = {
-			File = {path = wezterm.home_dir .. '/.config/background.jpg'},
-		  },
-		  attachment = { Parallax = 0.1 },
-		  repeat_y = 'Mirror',
-		  horizontal_align = 'Center',
-		  opacity = 0.4,
-		  hsb = {
-			hue = 1.0,
-			saturation = 0.95,
-			brightness = 0.5,
-		  },
-		},
-	  }
+		if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+			wezterm.log_info("Fullscreen detected, setting background to opaque")
+			config.window_background_opacity = 0
+		else
+			config.window_background_opacity = nil
+		end
+		config.background = {
+			{
+				source = {
+					File = { path = wezterm.home_dir .. '/.config/background.jpg' },
+				},
+				attachment = { Parallax = 0.1 },
+				repeat_y = 'Mirror',
+				horizontal_align = 'Center',
+				opacity = 0.4,
+				hsb = {
+					hue = 1.0,
+					saturation = 0.95,
+					brightness = 0.5,
+				},
+			},
+		}
 	else
-	  config.window_background_opacity = 0.85
-	  config.background = nil
+		if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+			config.window_background_opacity = 0
+		else
+			config.window_background_opacity = 0.85
+		end
+		config.background = nil
 	end
-  end
+end
 
-  wezterm.on('window-resized', function(window, pane)
+wezterm.on('window-resized', function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	local is_fullscreen = window:get_dimensions().is_full_screen
 	set_background(overrides, is_fullscreen)
 	window:set_config_overrides(overrides)
-  end)
+end)
 
 -- inactive pane dimming
 config.inactive_pane_hsb = {
@@ -114,11 +127,11 @@ tabline.setup({
 			"index",
 			{ "parent", padding = 0 },
 			"/",
-			{ "cwd", padding = { left = 0, right = 1 } },
+			{ "cwd",    padding = { left = 0, right = 1 } },
 			{ "zoomed", padding = 0 },
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = {  },
+		tabline_x = {},
 		tabline_y = { "battery" },
 		tabline_z = {
 			{
@@ -157,10 +170,12 @@ tabline.setup({
 })
 
 -- Maximize on startup
-wezterm.on("gui-startup", function()
-	local tab, pane, window = mux.spawn_window({})
-	window:gui_window():maximize()
-end)
+if wezterm.target_triple ~= "x86_64-pc-windows-msvc" then
+	wezterm.on("gui-startup", function()
+		local tab, pane, window = mux.spawn_window({})
+		window:gui_window():maximize()
+	end)
+end
 
 config.mouse_bindings = {
 	-- Ctrl-click will open the link under the mouse cursor
@@ -184,14 +199,14 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	-- key mapping
 	config.keys = {
 		{ key = "d", mods = "SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "d", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "[", mods = "ALT", action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "ALT", action = act.ActivateTabRelative(1) },
-		{ key = "w", mods = "ALT", action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "c", mods = "ALT", action = act.CopyTo("Clipboard") },
-		{ key = "v", mods = "ALT", action = act.PasteFrom("Clipboard") },
-		{ key = "n", mods = "ALT", action = act.SpawnWindow },
-		{ key = "t", mods = "ALT", action = act.SpawnTab("DefaultDomain") },
+		{ key = "d", mods = "ALT",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "[", mods = "ALT",       action = act.ActivateTabRelative(-1) },
+		{ key = "]", mods = "ALT",       action = act.ActivateTabRelative(1) },
+		{ key = "w", mods = "ALT",       action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "c", mods = "ALT",       action = act.CopyTo("Clipboard") },
+		{ key = "v", mods = "ALT",       action = act.PasteFrom("Clipboard") },
+		{ key = "n", mods = "ALT",       action = act.SpawnWindow },
+		{ key = "t", mods = "ALT",       action = act.SpawnTab("DefaultDomain") },
 		{
 			key = "k",
 			mods = "ALT",
@@ -219,13 +234,13 @@ if wezterm.target_triple == "aarch64-apple-darwin" then
 	-- key mapping
 	config.keys = {
 		{ key = "d", mods = "SHIFT|CMD", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "d", mods = "CMD", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "[", mods = "ALT", action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "ALT", action = act.ActivateTabRelative(1) },
-		{ key = "f", mods = "CTRL|CMD", action = wezterm.action.ToggleFullScreen },
-		{ key = "w", mods = "CMD", action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "n", mods = "CMD", action = act.SpawnWindow },
-		{ key = "t", mods = "CMD", action = act.SpawnTab("DefaultDomain") },
+		{ key = "d", mods = "CMD",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "[", mods = "ALT",       action = act.ActivateTabRelative(-1) },
+		{ key = "]", mods = "ALT",       action = act.ActivateTabRelative(1) },
+		{ key = "f", mods = "CTRL|CMD",  action = wezterm.action.ToggleFullScreen },
+		{ key = "w", mods = "CMD",       action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "n", mods = "CMD",       action = act.SpawnWindow },
+		{ key = "t", mods = "CMD",       action = act.SpawnTab("DefaultDomain") },
 		{
 			key = "k",
 			mods = "CMD",
