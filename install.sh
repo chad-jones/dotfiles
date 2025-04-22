@@ -24,7 +24,7 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install velero
   brew install Azure/kubelogin/kubelogin
   brew install kubie
-  brew install kubecolor
+  # brew install kubecolor
 
   # devops
   brew tap hashicorp/tap
@@ -77,6 +77,7 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install --cask font-fira-code-nerd-font
   brew install viu
   brew install lolcat
+  brew install figlet
 
   # utils
   brew install lsd
@@ -173,9 +174,20 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt install -y pinentry-gtk2
   sudo apt install -y pinentry-curses
   sudo apt install -y software-properties-common
+  sudo apt install -y htop
+  sudo apt install -y figlet
+  sudo apt install -y lolcat
+  sudo apt install -y jq
+  sudo apt install -y yq
   # kubie
   wget https://github.com/sbstp/kubie/releases/download/v0.25.2/kubie-linux-arm64 -O ~/.local/bin/kubie
   chmod +x /usr/local/bin/kubie
+  # sops
+  wget https://github.com/getsops/sops/releases/download/v3.10.2/sops-v3.10.2.linux.amd64 -O ~/.local/bin/sops
+  chmod +x ~/.local/bin/sops
+  # croc
+  curl https://getcroc.schollz.com | bash
+
   # install krew
   (
     set -x
