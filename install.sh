@@ -174,8 +174,7 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt install -y pinentry-curses
   sudo apt install -y software-properties-common
   # kubie
-  mkdir -p ~/bin
-  wget https://github.com/sbstp/kubie/releases/download/v0.25.2/kubie-linux-arm64 -O /usr/local/bin/kubie
+  wget https://github.com/sbstp/kubie/releases/download/v0.25.2/kubie-linux-arm64 -O ~/.local/bin/kubie
   chmod +x /usr/local/bin/kubie
   # install krew
   (
@@ -229,6 +228,7 @@ ln -nfs ~/dotfiles/config/fish/config.fish ~/.config/fish/
 ln -nfs ~/dotfiles/config/fish/alias.fish ~/.config/fish/
 ln -nfs ~/dotfiles/config/fish/alias.darwin.fish ~/.config/fish/
 ln -nfs ~/dotfiles/config/fish/alias.linux.fish ~/.config/fish/
+ln -nfs ~/dotfiles/config/fish/just.fish ~/.config/fish/
 for file in ~/dotfiles/config/fish/functions/*; do ln -nfs "${file}" ~/.config/fish/functions/"$(basename -- "${file}")"; done
 
 # starship

@@ -50,6 +50,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 
 set -x EDITOR nvim
 source ~/.config/fish/alias.fish
+source ~/.config/fish/just.fish
 
 fish_vi_key_bindings
 
