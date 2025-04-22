@@ -32,7 +32,7 @@ config.colors = {
 	},
 }
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	config.win32_system_backdrop = 'Tabbed'
+	config.win32_system_backdrop = "Tabbed"
 end
 
 -- Switch between just an opacity and a background image based on whether we are fullscreen
@@ -47,11 +47,11 @@ local function set_background(config, is_fullscreen)
 		config.background = {
 			{
 				source = {
-					File = { path = wezterm.home_dir .. '/.config/background.jpg' },
+					File = { path = wezterm.home_dir .. "/.config/background.jpg" },
 				},
 				attachment = { Parallax = 0.1 },
-				repeat_y = 'Mirror',
-				horizontal_align = 'Center',
+				repeat_y = "Mirror",
+				horizontal_align = "Center",
 				opacity = 0.4,
 				hsb = {
 					hue = 1.0,
@@ -70,7 +70,7 @@ local function set_background(config, is_fullscreen)
 	end
 end
 
-wezterm.on('window-resized', function(window, pane)
+wezterm.on("window-resized", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	local is_fullscreen = window:get_dimensions().is_full_screen
 	set_background(overrides, is_fullscreen)
@@ -201,15 +201,15 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.color_scheme_dirs = { "/mnt/c/Users/chad.jones/colors" }
 	-- key mapping
 	config.keys = {
-		{ key = "d", mods = "SHIFT|ALT",    action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "d", mods = "ALT",                action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "[", mods = "ALT",                action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "ALT",                action = act.ActivateTabRelative(1) },
-		{ key = "w", mods = "ALT",                action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "c", mods = "ALT",                action = act.CopyTo("Clipboard") },
-		{ key = "v", mods = "ALT",                action = act.PasteFrom("Clipboard") },
-		{ key = "n", mods = "ALT",                action = act.SpawnWindow },
-		{ key = "t", mods = "ALT",                action = act.SpawnTab("DefaultDomain") },
+		{ key = "d", mods = "SHIFT|ALT",     action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "d", mods = "ALT",                 action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "[", mods = "ALT",                 action = act.ActivateTabRelative(-1) },
+		{ key = "]", mods = "ALT",                 action = act.ActivateTabRelative(1) },
+		{ key = "w", mods = "ALT",                 action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "c", mods = "ALT",                 action = act.CopyTo("Clipboard") },
+		{ key = "v", mods = "ALT",                 action = act.PasteFrom("Clipboard") },
+		{ key = "n", mods = "ALT",                 action = act.SpawnWindow },
+		{ key = "t", mods = "ALT",                 action = act.SpawnTab("DefaultDomain") },
 		{ key = 'f', mods = 'ALT',          action = act.TogglePaneZoomState },
 		{ key = 'w', mods = 'LEADER',       action = act.ShowTabNavigator },
 		{ key = '[', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
@@ -217,8 +217,13 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		{ key = '{', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
 		{ key = '}', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
 		{
+			key = 'f',
+			mods = 'ALT|SHIFT',
+			action = act.Search { CaseInSensitiveString = '' },
+		},
+		{
 			key = "k",
-			mods = "ALT",
+			mods = "ALT|SHIFT",
 			action = act.Multiple({
 				act.ClearScrollback("ScrollbackAndViewport"),
 				act.SendKey({ key = "l", mods = "CTRL" }),
@@ -256,6 +261,11 @@ if wezterm.target_triple == "aarch64-apple-darwin" then
 		{ key = ']', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
 		{ key = '{', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
 		{ key = '}', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
+		{
+			key = 'f',
+			mods = 'CMD',
+			action = act.Search { CaseInSensitiveString = '' },
+		},
 		{
 			key = "k",
 			mods = "CMD",
