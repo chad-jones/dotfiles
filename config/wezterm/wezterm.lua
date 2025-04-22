@@ -210,7 +210,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		{ key = "v", mods = "ALT",                 action = act.PasteFrom("Clipboard") },
 		{ key = "n", mods = "ALT",                 action = act.SpawnWindow },
 		{ key = "t", mods = "ALT",                 action = act.SpawnTab("DefaultDomain") },
-		{ key = 'f', mods = 'ALT',          action = act.TogglePaneZoomState },
+		{ key = 'f', mods = 'CTRL',          action = act.TogglePaneZoomState },
 		{ key = 'w', mods = 'LEADER',       action = act.ShowTabNavigator },
 		{ key = '[', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
 		{ key = ']', mods = 'LEADER',       action = act.PaneSelect { mode = 'Activate' } },
@@ -218,7 +218,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		{ key = '}', mods = 'LEADER|SHIFT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
 		{
 			key = 'f',
-			mods = 'ALT|SHIFT',
+			mods = 'ALT',
 			action = act.Search { CaseInSensitiveString = '' },
 		},
 		{
