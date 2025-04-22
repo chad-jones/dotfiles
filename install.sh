@@ -173,6 +173,10 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt install -y pinentry-gtk2
   sudo apt install -y pinentry-curses
   sudo apt install -y software-properties-common
+  # kubie
+  mkdir -p ~/bin
+  wget https://github.com/sbstp/kubie/releases/download/v0.25.2/kubie-linux-arm64 -O /usr/local/bin/kubie
+  chmod +x /usr/local/bin/kubie
   # install krew
   (
     set -x

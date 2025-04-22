@@ -29,7 +29,7 @@ switch (uname)
 
     case Linux
         # do things for Linux
-        set -gx PATH $PATH $HOME/bin $HOME/.krew/bin
+        set -gx PATH $PATH $HOME/bin $HOME/.krew/bin $HOME/.local/bin
         source ~/.config/fish/alias.linux.fish
 
     case '*'
