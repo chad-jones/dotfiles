@@ -25,6 +25,7 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install Azure/kubelogin/kubelogin
   brew install kubie
   brew install kubelogin
+  brew install siderolabs/tap/talosctl
   # brew install kubecolor
 
   # devops
@@ -188,6 +189,8 @@ elif [[ ${UNAME} == "Linux" ]]; then
   chmod +x ~/.local/bin/sops
   # croc
   curl https://getcroc.schollz.com | bash
+  # talosctl
+  curl -sL https://talos.dev/install | sh
   # azure cli
   sudo mkdir -p /etc/apt/keyrings
   curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
