@@ -3,7 +3,7 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 local mux = wezterm.mux
 
-config.pane_focus_follows_mouse = true
+-- config.pane_focus_follows_mouse = true
 config.scrollback_lines = 5000
 
 -- leader
