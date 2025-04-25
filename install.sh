@@ -26,6 +26,7 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install kubie
   brew install kubelogin
   brew install siderolabs/tap/talosctl
+  brew install argocd-autopilot
   # brew install kubecolor
 
   # devops
@@ -191,6 +192,16 @@ elif [[ ${UNAME} == "Linux" ]]; then
   curl https://getcroc.schollz.com | bash
   # talosctl
   curl -sL https://talos.dev/install | sh
+  # argocd autopilot
+  # get the latest version or change to a specific version
+  VERSION=$(curl --silent "https://api.github.com/repos/argoproj-labs/argocd-autopilot/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+
+  # download and extract the binary
+  curl -L --output - https://github.com/argoproj-labs/argocd-autopilot/releases/download/"$VERSION"/argocd-autopilot-linux-amd64.tar.gz | tar zx
+
+  # move the binary to your $PATH
+  mv ./argocd-autopilot-* /usr/local/bin/argocd-autopilot
+
   # azure cli
   sudo mkdir -p /etc/apt/keyrings
   curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
