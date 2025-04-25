@@ -24,6 +24,7 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install velero
   brew install Azure/kubelogin/kubelogin
   brew install kubie
+  brew install kubelogin
   # brew install kubecolor
 
   # devops
@@ -238,6 +239,7 @@ echo '--theme="Catppuccin Mocha"' > "$(bat --config-dir)/config"
 kubectl krew install relay
 kubectl krew install sniff
 kubectl krew install view-secret
+kubectl krew install oidc-login
 
 # wezterm
 ln -nfs ~/dotfiles/config/wezterm/wezterm.lua ~/.config/wezterm/
