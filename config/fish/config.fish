@@ -29,7 +29,7 @@ switch (uname)
 
     case Linux
         # do things for Linux
-        set -gx PATH $PATH $HOME/bin $HOME/.krew/bin $HOME/.local/bin
+        set -gx PATH $PATH $HOME/bin $HOME/bin/ovftool $HOME/.krew/bin $HOME/.local/bin
         source ~/.config/fish/alias.linux.fish
 
     case '*'
@@ -56,9 +56,6 @@ fish_vi_key_bindings
 
 #zoxide
 zoxide init --cmd cd fish | source
-
+direnv hook fish | source
 # Install Starship
 starship init fish | source
-
-pyenv init - | source
-pyenv virtualenv-init - | source

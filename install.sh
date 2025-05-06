@@ -81,6 +81,7 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install viu
   brew install lolcat
   brew install figlet
+  brew install direnv
 
   # utils
   brew install lsd
@@ -111,6 +112,8 @@ if [[ ${UNAME} == "Darwin" ]]; then
   brew install spotify
   brew install maestral
   wget -qO- https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Darwin_arm64.tar.gz | tar xvz -C ~/bin
+  # uv
+  curl -LsSf https://astral.sh/uv/install.sh | sh
 
   # fish
   grep -E "(fish)" /etc/shells || echo "/opt/homebrew/opt/fish/bin/fish" | sudo tee -a /etc/shells
@@ -154,7 +157,6 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt install -y libssl-dev
   sudo apt install -y freetds-dev
   sudo apt install -y libjpeg-dev zlib1g-dev
-  sudo apt install -y just
   sudo apt install -y hub
   sudo apt install -y ripgrep
   sudo apt install -y zoxide
@@ -182,6 +184,9 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt install -y lolcat
   sudo apt install -y jq
   sudo apt install -y yq
+  suod apt install -y direnv
+  # just
+  pipx install rust-just
   # kubie
   wget https://github.com/sbstp/kubie/releases/download/v0.25.2/kubie-linux-arm64 -O ~/.local/bin/kubie
   chmod +x /usr/local/bin/kubie
@@ -192,6 +197,8 @@ elif [[ ${UNAME} == "Linux" ]]; then
   curl https://getcroc.schollz.com | bash
   # talosctl
   curl -sL https://talos.dev/install | sh
+  # uv
+  curl -LsSf https://astral.sh/uv/install.sh | sh
   # argocd autopilot
   # get the latest version or change to a specific version
   VERSION=$(curl --silent "https://api.github.com/repos/argoproj-labs/argocd-autopilot/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
@@ -205,7 +212,7 @@ elif [[ ${UNAME} == "Linux" ]]; then
   # azure cli
   sudo mkdir -p /etc/apt/keyrings
   curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
-  gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+    gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg >/dev/null
   sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
   AZ_DIST=$(lsb_release -cs)
   echo "Types: deb
@@ -217,7 +224,6 @@ elif [[ ${UNAME} == "Linux" ]]; then
   sudo apt-get update
   sudo apt-get install azure-cli
   az extension add --name azure-devops
-
 
   # install krew
   (
@@ -247,7 +253,7 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
-echo '--theme="Catppuccin Mocha"' > "$(bat --config-dir)/config"
+echo '--theme="Catppuccin Mocha"' >"$(bat --config-dir)/config"
 
 # kubectl plugins
 kubectl krew install relay
